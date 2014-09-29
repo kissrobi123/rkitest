@@ -54,19 +54,18 @@ foreach ($menu_list as $menu) {
 				<input type="hidden" name="action" value="menu" /> 
 				<input type="submit" name="operation_submenu" value="Submeniu"/>
 				<input type="submit" name="operation_edit" value="Editeaza"/>
-				<input type="submit" name="operation_delete" value="Sterge"/>
 			</form>
 			<form action="" method="post" style="float: left">
 				<input type="hidden" name="menu" value="<?php echo $menu['id']; ?>" /> 
 				<input type="hidden" name="action" value="menu_values" /> 
 				<input type="submit" value="Traduceri" />
 			</form>
-			
+<!--			
 			<form action="" method="post" style="float: left">
 				<input type="hidden" name="menu" value="<?php echo $menu['id']; ?>" /> 
 				<input type="hidden" name="action" value="pages" /> 
 				<input type="submit" value="Pagini" />
-			</form>
+			</form>-->
 		</td>
 	</tr>
 <?php
@@ -113,6 +112,10 @@ if (isset($menu_edit)) {
 			?>
 			</select>
 		</td>
+	</tr>
+	<tr>
+		<td>Stare</td>
+		<td><input type="checkbox" name="state" value="1" <?php if($menu['state'] > 0) { ?> checked="checked" <?php } ?>></td>
 	</tr>
 	<tr>
 		<td colspan="2">

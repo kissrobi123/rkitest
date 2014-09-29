@@ -32,7 +32,7 @@ if ($parent_id > 0) {
 
 if ($operation == 'add') {
 	$menu_edit = array();
-	$menu_edit['0'] = array('id' => '', 'name' => '', 'position' => '');
+	$menu_edit['0'] = array('id' => '', 'name' => '', 'position' => '', 'state' => '');
 }
 
 if ($operation == 'edit') {
@@ -52,14 +52,15 @@ if ($operation == 'save') {
 	$name = $_POST['name'];
 	$position = $_POST['position'];
 	$parent = $_POST['parent'];
+	$state = isset($_POST['state']) ? 1 : 0;
 	
 	if (isset($_POST['id']) and strlen($_POST['id']) > 0) {
 		//it is update
-		executeOperation("UPDATE menus SET name = '$name', position=$position WHERE id = $id");
+		executeOperation("UPDATE menus SET name = '$name', position=$position, state=$state WHERE id = $id");
 	} else {
 		// it is insert
 		$id = getMaxId("menus") + 1;
-		executeOperation("INSERT INTO menus values($id, '$name', $position, $parent)");
+		executeOperation("INSERT INTO menus values($id, '$name', $position, $parent, $state)");
 	}
 }
 
