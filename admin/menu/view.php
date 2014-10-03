@@ -59,13 +59,17 @@ foreach ($menu_list as $menu) {
 				<input type="hidden" name="menu" value="<?php echo $menu['id']; ?>" /> 
 				<input type="hidden" name="action" value="menu_values" /> 
 				<input type="submit" value="Traduceri" />
-			</form>
-<!--			
+			</form>			
 			<form action="" method="post" style="float: left">
 				<input type="hidden" name="menu" value="<?php echo $menu['id']; ?>" /> 
 				<input type="hidden" name="action" value="pages" /> 
 				<input type="submit" value="Pagini" />
-			</form>-->
+			</form>
+			<form action="" method="post" style="float: left">
+				<input type="hidden" name="menu" value="<?php echo $menu['id']; ?>" /> 
+				<input type="hidden" name="action" value="products" /> 
+				<input type="submit" value="Produse" />
+			</form>
 		</td>
 	</tr>
 <?php
