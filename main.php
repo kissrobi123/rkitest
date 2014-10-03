@@ -1,6 +1,5 @@
 <?php 
 require_once 'utils/db_connect.php';
-require_once 'utils/menu.php';
 connect();
 
 function getMenuTranslation($menuId, $languageId, $menu) {
