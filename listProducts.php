@@ -2,12 +2,17 @@
 function listProducts($menuId, $languageId) {
 	$childMenus = executeSelect("SELECT * FROM menus WHERE parent = $menuId AND state > 0 ORDER BY position, id");
 	foreach ($childMenus as $childMenu) {
-		$products = executeSelect("SELECT * FROM products WHERE menu = $menuId AND language = $languageId");
+		$products = executeSelect("SELECT * FROM products WHERE menu = $menuId");
 		if (count($products) > 0) {
 ?>
 <table>
 <?php
 		foreach ($products as $product) {
+			$producLangs = executeSelect("SELECT * FROM product_langs WHERE product = " . $product['id'] . " AND language = $languageId");
+			if (isset($producLangs['0'])) {
+				$product['name'] = $producLangs['0']['name'];
+				$product['shortDescr'] = $producLangs['0']['shortDescr'];
+			}
 ?>
 	<tr>
 		<td>Nume: </td>
@@ -16,6 +21,10 @@ function listProducts($menuId, $languageId) {
 	<tr>
 		<td>Dim(Lxlxh): </td>
 		<td><?php echo $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?></td>
+	</tr>
+	<tr>
+		<td>Descr: </td>
+		<td><?php echo $product['shortDescr'];?></td>
 	</tr>
 <?php
 		}
