@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2014 at 01:53 PM
+-- Generation Time: Oct 03, 2014 at 02:37 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -108,12 +108,12 @@ INSERT INTO `menus` (`id`, `name`, `position`, `parent`, `state`) VALUES
 (2, 'Contact', 2, -1, 1),
 (1, 'Produse', 1, -1, 1),
 (3, 'Despre noi', 3, -1, 1),
-(4, 'Scaune', 1, 1, 0),
-(5, 'Mese', 2, 1, 0),
+(4, 'Scaune', 1, 1, 1),
+(5, 'Mese', 2, 1, 1),
 (6, 'Mobilier', 3, 1, 1),
 (7, 'Pliabil', 1, 4, 0),
 (8, 'Fix', 2, 4, 0),
-(9, 'Fix', 2, 4, 0);
+(9, 'Fix', 2, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -168,21 +168,36 @@ INSERT INTO `pages` (`id`, `menu`, `language`, `title`, `keywords`, `value`) VAL
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu` int(11) NOT NULL,
-  `language` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `length` varchar(50) DEFAULT NULL,
   `width` varchar(50) DEFAULT NULL,
   `height` varchar(50) DEFAULT NULL,
   `shortDescr` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `menu`, `language`, `name`, `length`, `width`, `height`, `shortDescr`) VALUES
-(1, 4, 1, 'Scaun 1', '10', '10', '10', 'cnsdcnjdk cdsjkcndkjs cndjsk');
+INSERT INTO `products` (`id`, `menu`, `name`, `length`, `width`, `height`, `shortDescr`) VALUES
+(1, 4, 'Scaun 1', '10', '10', '10', 'cnsdcnjdk cdsjkcndkjs cndjsk'),
+(2, 7, 'Scaun fag', '0', '0', '0', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_langs`
+--
+
+CREATE TABLE IF NOT EXISTS `product_langs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product` int(11) NOT NULL,
+  `language` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `shortDescr` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
