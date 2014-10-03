@@ -2,7 +2,7 @@
 		<tr>
 			<td style="vertical-align: top; padding-top: 20px;">
 <?php 
-$menu_child_list = executeSelect("SELECT * FROM menus WHERE parent = $menuId ORDER BY position, id");
+$menu_child_list = executeSelect("SELECT * FROM menus WHERE parent = $menuId AND state > 0 ORDER BY position, id");
 
 $childs = count($menu_child_list);
 foreach ($menu_child_list as $menu) {
@@ -15,6 +15,8 @@ foreach ($menu_child_list as $menu) {
 			</td>
 			<td>
 <?php 
+require_once('listProducts.php');
+
 $content = executeSelect("SELECT * FROM pages WHERE menu = $menuId AND language = $languageId");
 if (isset($content[0])) {
 	echo $content[0]['value'];
