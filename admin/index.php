@@ -20,10 +20,12 @@
 				<input type="hidden" name="action" value="menu" />
 				<input type="submit" value="Meniuri" />
 			</form>
+<!--
 			<form method="POST" action="">
 				<input type="hidden" name="action" value="folder" />
 				<input type="submit" value="Fisiere" />
 			</form>
+-->
 		</td>
 		<td style="vertical-align: top;"><?php 
 			require_once 'process.php';

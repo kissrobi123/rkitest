@@ -33,6 +33,12 @@ foreach ($products_list as $product) {
 				<input type="hidden" name="action" value="product_lang" /> 
 				<input type="submit" value="Traduceri" />
 			</form>			
+			<form action="" method="post" style="float: left">
+				<input type="hidden" name="menu" value="<?php echo $menu_id; ?>" />
+				<input type="hidden" name="product" value="<?php echo $product['id']; ?>" /> 
+				<input type="hidden" name="action" value="product_imgs" /> 
+				<input type="submit" value="Imagini" />
+			</form>
 		</td>
 	</tr>
 <?php
