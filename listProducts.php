@@ -28,5 +28,30 @@ function listProducts($menuId, $languageId) {
 	}
 }
 
-listProducts($menuId, $languageId);
+function listProduct($productId, $languageId) {
+	$products = executeSelect("SELECT * FROM products WHERE id = $productId");
+	if (isset($products['0'])) {
+		$product = $products['0'];
+		$producLangs = executeSelect("SELECT * FROM product_langs WHERE product = " . $product['id'] . " AND language = $languageId");
+		if (isset($producLangs['0'])) {
+			$product['name'] = $producLangs['0']['name'];
+			$product['shortDescr'] = $producLangs['0']['shortDescr'];
+		}
+?>
+<div style="width: 100%; text-align:center">
+	<span style="font-size:30px; font-weight: bold"><?php echo $product['name'];?></span><br/>
+	<img src="<?php echo "images/".$product['id']; ?>">
+	<br/>
+	Dim(Lxlxh): <?php echo $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?><br/>
+	Descr: <?php echo $product['shortDescr'];?></td>
+</div>
+<?php
+	}
+}
+
+if ($productId != null) {
+	listProduct($productId, $languageId);
+} else {
+	listProducts($menuId, $languageId);
+}
 ?>

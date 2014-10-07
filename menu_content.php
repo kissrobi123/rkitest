@@ -1,4 +1,4 @@
-	<table>
+	<table style="width:100%">
 		<tr>
 			<td style="vertical-align: top; padding-top: 20px;">
 <?php 

@@ -36,7 +36,7 @@ $menuId = 1;
 if (isset($_POST['menuId'])) {
 	$menuId = $_POST['menuId'];
 }
-$productId = 1;
+$productId = null;
 if (isset($_POST['productId']) && strlen($_POST['productId']) > 0) {
 	$productId = $_POST['productId'];
 	$products = executeSelect("SELECT * FROM products WHERE id = $productId");
