@@ -42,8 +42,12 @@ function listProduct($productId, $languageId) {
 	<span style="font-size:30px; font-weight: bold"><?php echo $product['name'];?></span><br/>
 	<img src="<?php echo "images/".$product['id']; ?>">
 	<br/>
-	Dim(Lxlxh): <?php echo $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?><br/>
-	Descr: <?php echo $product['shortDescr'];?></td>
+	
+	<div style="text-align: left; width: 400px; display: inline-block">
+	Dim(Lxlxh): <?php echo $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?>
+	<br/>
+	Descriere: <?php echo $product['shortDescr'];?>
+	</div>
 </div>
 <?php
 	}
