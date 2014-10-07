@@ -12,7 +12,7 @@ function listProducts($menuId, $languageId) {
 ?>
 <table>
 	<tr>
-		<td rowspan="3"><img src="<?php echo "images/".$product['id']. "_150_150.jpg"; ?>" </td>
+		<td rowspan="3"><img src="<?php echo "images/".$product['id']. "_150_150.jpg"; ?>" onclick="javascript:submitProductForm('<?php echo $product['id'];?>')"> </td>
 		<td style="vertical-align:top">
 			Nume: <?php echo $product['name'];?><br/>
 			Dim(Lxlxh): <?php echo $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?><br/>

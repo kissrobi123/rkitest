@@ -14,12 +14,14 @@ function getMenuTranslation($menuId, $languageId, $menu) {
 
 // print_r($_POST);
 ?>
+<!--
 	<div>
 		<div style="height: 210px; font-size: 40px; text-align: center; text-shadow:blue; text-transform: uppercase;">
 			<input type="image" src="images/templom1b.jpg" style="float: left; padding-right: 20px;">
 			Arad gaji reformatus egyhazkozseg
 		</div>
 	</div>	
+-->
 	<div class="menu">
 		<table>
 			<tr style="height: 46px; width: 700px; text-transform: uppercase; overflow: hidden;">

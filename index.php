@@ -15,6 +15,11 @@ connect();
 	<script type="text/javascript">
 	function submitMenuForm(id) {
 		document.getElementById('menuId').value = id;
+		document.getElementById('productId').value = null;
+		document.getElementById('formToSubmit').submit();
+	}
+	function submitProductForm(id) {
+		document.getElementById('productId').value = id;
 		document.getElementById('formToSubmit').submit();
 	}
 	function submitLanguageForm(id) {
@@ -31,12 +36,21 @@ $menuId = 1;
 if (isset($_POST['menuId'])) {
 	$menuId = $_POST['menuId'];
 }
+$productId = 1;
+if (isset($_POST['productId']) && strlen($_POST['productId']) > 0) {
+	$productId = $_POST['productId'];
+	$products = executeSelect("SELECT * FROM products WHERE id = $productId");
+	if (isset($products['0'])) {
+		$menuId = $products['0']['menu'];
+	}
+}
 $languageId = 1;
 if (isset($_POST['languageId'])) {
 	$languageId = $_POST['languageId'];
 }
 ?>
 	<form action="" method="post" id="formToSubmit">
+		<input type="hidden" name="productId" id="productId" value="<?php echo $productId; ?>"/>
 		<input type="hidden" name="menuId" id="menuId" value="<?php echo $menuId; ?>"/>
 		<input type="hidden" name="languageId" id="languageId" value="<?php echo $languageId; ?>"/>
 	</form>
@@ -47,19 +61,19 @@ if (isset($_POST['languageId'])) {
 <div class="main">
 	<div class="spacer">&nbsp;</div>
 	<div class="content">
-		<table>
+		<table style="height:100%">
 			<tr>
 				<td style="background-image: url('images/slice/rect5205.png'); background-repeat: repeat-y; background-position: right; vertical-align: top;width: 50px; height: 100%">
 					<input type="image" src="images/slice/rect5207.png" /> 
 					<input type="image" src="images/slice/rect5207_new.png" />
 				</td>
-				<td rowspan="2" style="width: 900px;">
+				<td rowspan="2" style="width: 900px">
 					<table style="height: 100%;">
 						<tr>
 							<td style="width: 100%; background-image: url('images/slice/rect5209.png'); background-repeat: repeat-x;"><input type="image" src="images/slice/rect5209.png" />
 							</td>
 						</tr>
-						<tr style="height: 100%; border: 1px solid blue">
+						<tr style="height: 100%; border: 1px solid blue; vertical-align: top">
 							<td>
 								<?php require_once 'main.php'; ?>
 							</td>
