@@ -11,7 +11,7 @@ connect();
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-Language" content="en" />
 <link rel="StyleSheet" HREF="css/main.css" TYPE="text/css">
-<title>Arad gaji reformatus egyhazkozseg</title>
+<title>Title</title>
 	<script type="text/javascript">
 	function submitMenuForm(id) {
 		document.getElementById('menuId').value = id;
