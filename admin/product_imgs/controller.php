@@ -24,10 +24,28 @@ if ($operation == 'setMain') {
 	if ($_FILES["file"]["error"] > 0) {
 	} else {
 		$fileName = "../images/". $product_id;
-		move_uploaded_file($_FILES["file"]["tmp_name"], $fileName);
+		move_uploaded_file($_FILES["file"]["tmp_name"], $fileName. ".jpg");
 		makeThumb($fileName, $fileName . "_150_150.jpg");
 	}
 }
+
+if ($operation == 'addDetail') {
+    if ($_FILES["file"]["error"] > 0) {
+    } else {
+        $fileName = "../images/". $product_id;
+        $dirThumb = $fileName;
+        $dirOrig = $fileName . "_o";
+        if (!file_exists($dirThumb) ) {
+            mkdir($dirThumb);
+            mkdir($dirOrig);
+        }
+        $fileName = time() . ".jpg";
+        move_uploaded_file($_FILES["file"]["tmp_name"], $dirOrig . "/" . $fileName);
+        makeSizesBasedThumb($dirOrig . "/" . $fileName, $dirThumb . "/" . $fileName, 30, 30);
+    }
+}
+
+$detailImages = scandir("../images/". $product_id);
 
 require_once 'view.php';
 ?>
