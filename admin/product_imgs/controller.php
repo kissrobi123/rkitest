@@ -25,7 +25,8 @@ if ($operation == 'setMain') {
 	} else {
 		$fileName = "../images/". $product_id;
 		move_uploaded_file($_FILES["file"]["tmp_name"], $fileName. ".jpg");
-		makeThumb($fileName, $fileName . "_150_150.jpg");
+		makeThumb($fileName . ".jpg", $fileName . "_150_150.jpg");
+        makeSizesBasedThumb($fileName . ".jpg", $fileName . "_30_30.jpg", 30, 30);
 	}
 }
 
@@ -42,6 +43,20 @@ if ($operation == 'addDetail') {
         $fileName = time() . ".jpg";
         move_uploaded_file($_FILES["file"]["tmp_name"], $dirOrig . "/" . $fileName);
         makeSizesBasedThumb($dirOrig . "/" . $fileName, $dirThumb . "/" . $fileName, 30, 30);
+    }
+}
+
+if ($operation == 'delete' && isset($_POST['image']) and strlen($_POST['image']) > 0) {
+    $image = $_POST["image"];
+    $fileName = "../images/". $product_id;
+    $dirThumb = $fileName;
+    $dirOrig = $fileName . "_o";
+
+    if (file_exists($dirOrig . "/" . $image)) {
+        unlink($dirOrig . "/" . $image);
+    }
+    if (file_exists($dirThumb . "/" . $image)) {
+        unlink($dirThumb . "/" . $image);
     }
 }
 

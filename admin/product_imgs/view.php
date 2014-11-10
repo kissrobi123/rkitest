@@ -49,11 +49,11 @@
     ?>
 </table>
 
-<h3> Adauag imagine secundara </h3>
+<h3> Adauga imagine secundara </h3>
 <form action="" method="post" enctype="multipart/form-data">
     <input type="hidden" name="product" value="<?php echo $product_id; ?>" />
     <input type="hidden" name="action" value="product_imgs" />
     <input type="file" name="file">
-    <input type="submit" name="operation_addDetail" value="Salveaza" />
+    <input type="submit" name="operation_addDetail" value="Adauga" />
 </form>
 
