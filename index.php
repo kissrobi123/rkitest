@@ -26,6 +26,10 @@ connect();
 		document.getElementById('languageId').value = id;
 		document.getElementById('formToSubmit').submit();
 	}
+    function changeImg(fileName) {
+        document.getElementById('productImg').src = fileName;
+        console.log(fileName);
+    }
 	</script>
 	
 </head>

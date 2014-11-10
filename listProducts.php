@@ -82,16 +82,32 @@ function listProduct($productId, $languageId) {
 <?php
 	if (file_exists("images/".$product['id'])) {
 ?>
-	<img src="<?php echo "images/".$product['id']; ?>">
+	<img id="productImg" src="<?php echo "images/".$product['id'].".jpg"; ?>">
 	<br/>
 <?php
 	}
+
+    $detailImages = scandir("images/". $productId);
+    $filename = "images/". $productId;
 ?>
-	<div style="text-align: left; width: 400px; display: inline-block">
-	Dim(Lxlxh): <?php echo $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?>
-	<br/>
-	Descriere: <?php echo $product['shortDescr'];?>
-	</div>
+    <div style="text-align: left; width: 400px; display: inline-block">
+        <img onclick="changeImg(<?php echo "'" . $filename . ".jpg'"; ?>)" src="<?php echo $filename . "_30_30.jpg"; ?>" alt="Fara imagine">
+        <?php
+        foreach ($detailImages as $detailImage) {
+            if ($detailImage == '.' || $detailImage == '..') {
+                continue;
+            }
+            ?>
+            <img onclick="changeImg(<?php echo "'" . "images/". $productId . "_o/" . $detailImage . "'"; ?>)"
+                 src="<?php echo "images/". $productId . "/" . $detailImage; ?>" alt="Fara imagine">
+        <?php
+        }
+        ?>
+        <br/>
+        Dim(Lxlxh): <?php echo $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?>
+        <br/>
+        Descriere: <?php echo $product['shortDescr'];?>
+    </div>
 </div>
 <?php
 	}
