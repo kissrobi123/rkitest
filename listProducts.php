@@ -87,12 +87,21 @@ function listProduct($productId, $languageId) {
 <?php
 	}
 
-    $detailImages = scandir("images/". $productId);
+    $detailImages = array();
     $filename = "images/". $productId;
+    if (file_exists($filename)) {
+        $detailImages = scandir($filename);
+    }
 ?>
     <div style="text-align: left; width: 400px; display: inline-block">
-        <img onclick="changeImg(<?php echo "'" . $filename . ".jpg'"; ?>)" src="<?php echo $filename . "_30_30.jpg"; ?>" alt="Fara imagine">
-        <?php
+<?php
+    if (file_exists($filename . ".jpg")) {
+?>
+        <img onclick="changeImg(<?php echo "'" . $filename . ".jpg'"; ?>)" src="<?php echo $filename . "_30_30.jpg"; ?>"
+             alt="Fara imagine">
+<?php
+    }
+
         foreach ($detailImages as $detailImage) {
             if ($detailImage == '.' || $detailImage == '..') {
                 continue;

@@ -23,6 +23,8 @@
         </td>
         <td>
         </td>
+        <td>
+        </td>
     </tr>
     <?php
     foreach ($detailImages as $detailImage) {
