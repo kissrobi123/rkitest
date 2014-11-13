@@ -37,7 +37,7 @@ if ($operation == 'save') {
 
 	if (isset($_POST['id']) and strlen($_POST['id']) > 0) {
 		//it is update
-		executeOperation("UPDATE lang_keys SET 'key' = '$key', value = '$value' WHERE id = $id");
+		executeOperation("UPDATE lang_keys SET `key` = '$key', value = '$value' WHERE id = $id");
 	} else {
 		// it is insert
 		$id = getMaxId("lang_keys") + 1;

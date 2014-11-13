@@ -61,7 +61,7 @@ foreach ($lang_key_edit as $lang_key) {
 	</tr>
 	<tr>
 		<td>Traducere</td>
-		<td><input type="text" name="value" /> </td>
+		<td><input type="text" name="value" value="<?php echo $lang_key['value'];?>" /> </td>
 	</tr>
 	<tr>
 		<td colspan="2">
