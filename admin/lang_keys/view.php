@@ -56,6 +56,9 @@ foreach ($lang_key_edit as $lang_key) {
                 <option <?php if($lang_key == 'Descr:'){ ?> selected="selected" <?php }?>>
                     Descr:
                 </option>
+                <option <?php if($lang_key == 'Descriere:'){ ?> selected="selected" <?php }?>>
+                    Descriere:
+                </option>
             </select>
         </td>
 	</tr>

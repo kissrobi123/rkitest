@@ -1,4 +1,14 @@
 <?php
+function getTranslation($language, $key) {
+    $value = $key;
+    $lang_keys = executeSelect("SELECT * FROM lang_keys WHERE language = $language AND `key` = '$key'");
+    if (isset($lang_keys['0'])) {
+        $value = $lang_keys['0']['value'];
+    }
+
+    return $value;
+}
+
 function listProducts($menuId, $languageId) {
 	$products = array();
 	$products = addProducts($menuId, $languageId, $products);
@@ -21,9 +31,9 @@ function listProducts($menuId, $languageId) {
 ?>
 		<td ><img src="<?php echo $filename; ?>" onclick="javascript:submitProductForm('<?php echo $product['id'];?>')"> </td>
 		<td style="vertical-align:top; width: 300px">
-			Nume: <?php echo $product['name'];?><br/>
-			Dim(Lxlxh): <?php echo $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?><br/>
-			Descr: <?php echo $product['shortDescr'];?></td>
+			<?php echo getTranslation($languageId, 'Nume:') . " " . $product['name'];?><br/>
+			<?php echo getTranslation($languageId, 'Dim(Lxlxh):') . " " . $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?><br/>
+			<?php echo getTranslation($languageId, 'Descr:') . " " . $product['shortDescr'];?></td>
 <?php
 			$contor++;
 			if ($contor % 3 == 0) {
@@ -113,9 +123,9 @@ function listProduct($productId, $languageId) {
         }
         ?>
         <br/>
-        Dim(Lxlxh): <?php echo $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?>
+        <?php echo getTranslation($languageId, 'Dim(Lxlxh):') . " " . $product['length'] . ' x ' . $product['width'] . ' x ' . $product['height'];?>
         <br/>
-        Descriere: <?php echo $product['shortDescr'];?>
+        <?php echo getTranslation($languageId, 'Descriere:') . " " . $product['shortDescr'];?>
     </div>
 </div>
 <?php
