@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2014 at 02:37 PM
+-- Generation Time: Nov 13, 2014 at 11:44 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,49 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `church`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `files`
---
-
-CREATE TABLE IF NOT EXISTS `files` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `folder` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `files`
---
-
-INSERT INTO `files` (`id`, `folder`, `name`, `description`) VALUES
-(1, 1, 'asasa', 'sasa');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `folders`
---
-
-CREATE TABLE IF NOT EXISTS `folders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  `parent` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FULLTEXT KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
-
---
--- Dumping data for table `folders`
---
-
-INSERT INTO `folders` (`id`, `name`, `parent`) VALUES
-(1, 'asa', -1),
-(2, 'sasasa', 1);
 
 -- --------------------------------------------------------
 
@@ -84,6 +41,27 @@ INSERT INTO `languages` (`id`, `language`, `active`) VALUES
 (1, 'Romana', 1),
 (2, 'English', 1),
 (3, 'Magyar', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lang_keys`
+--
+
+CREATE TABLE IF NOT EXISTS `lang_keys` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `language` int(11) NOT NULL,
+  `key` varchar(250) NOT NULL,
+  `value` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `lang_keys`
+--
+
+INSERT INTO `lang_keys` (`id`, `language`, `key`, `value`) VALUES
+(1, 1, 'Nume:', 'Num');
 
 -- --------------------------------------------------------
 
@@ -111,8 +89,8 @@ INSERT INTO `menus` (`id`, `name`, `position`, `parent`, `state`) VALUES
 (4, 'Scaune', 1, 1, 1),
 (5, 'Mese', 2, 1, 1),
 (6, 'Mobilier', 3, 1, 1),
-(7, 'Pliabil', 1, 4, 0),
-(8, 'Fix', 2, 4, 0),
+(7, 'Pliabil', 1, 4, 1),
+(8, 'Old--Fix', 2, 4, 0),
 (9, 'Fix', 2, 4, 1);
 
 -- --------------------------------------------------------
@@ -174,15 +152,18 @@ CREATE TABLE IF NOT EXISTS `products` (
   `height` varchar(50) DEFAULT NULL,
   `shortDescr` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `menu`, `name`, `length`, `width`, `height`, `shortDescr`) VALUES
-(1, 4, 'Scaun 1', '10', '10', '10', 'cnsdcnjdk cdsjkcndkjs cndjsk'),
-(2, 7, 'Scaun fag', '0', '0', '0', '');
+(1, 7, 'Scaun fag', '13', '21', '21', ''),
+(2, 7, 'Scaun fag 2', '0', '0', '0', ''),
+(3, 9, 'Scaun fix 1', '10', '10', '10', 'vnfdjvndfk vndfjkvd nvjfdk'),
+(4, 9, 'Scaun fix 2', '0', '0', '0', ''),
+(5, 9, 'Scaun fix 3', '0', '0', '0', '');
 
 -- --------------------------------------------------------
 
@@ -197,7 +178,14 @@ CREATE TABLE IF NOT EXISTS `product_langs` (
   `name` varchar(100) NOT NULL,
   `shortDescr` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `product_langs`
+--
+
+INSERT INTO `product_langs` (`id`, `product`, `language`, `name`, `shortDescr`) VALUES
+(1, 1, 1, 'vfdvfd123', 'vdfvfd321 vndfkj njdfvnjkd nvdfjnvjd vnfkfd nvfdjknvkfd nvjdfknkjvfd nvjfdknvkd nvjdnvkjdf nvdfjknvd');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
